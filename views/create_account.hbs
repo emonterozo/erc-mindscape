@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="/stylesheets/index.css">
+
+{{# if success }}
+    
+{{ else }}
+<form class="form-signin pt-0 mt-0" action="/create/submit" method="POST">
+    <blockquote class="blockquote text-center mb-5">
+        <h3 class="mb-2">{{title}} A Mind Blowing Game</h3>
+        <footer class="blockquote-footer">Welcome to <cite title="Source Title">{{title}}</cite></footer>
+    </blockquote>
+    {{# if errors }}
+        <div class="container bg-danger text-white">
+            <blockquote class="h5 p-1 mt-5">{{errors}}</blockquote>
+        </div>
+    {{/if}}
+    <h6 class="mb-3 align-top font-weight-normal">Please create an account first</h6>
+    <input type="text" class="form-control" placeholder="Enter username" name="uname" value="{{ data }}" required>
+    <input type="text" class="form-control" placeholder="Enter fullname" name="fname" required>
+    <button class="btn btn-lg btn-dark btn-block" type="submit">Sign up</button>
+</form>
+
+
+{{/if}}
+
+  

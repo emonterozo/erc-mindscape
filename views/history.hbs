@@ -1,0 +1,25 @@
+  <h2>Playing History</h2>
+  <table class="table table-light table-striped table-hover">
+    <thead>
+      <tr class="thead-dark">
+        <th>Date</th>
+        <th>Time</th>
+        <th>Category</th>
+        <th>Score</th>
+        <th>Percentage</th>
+      </tr>
+    </thead>
+    {{#each data}}
+    <tr>
+        <td>{{this.date}}</td>
+        <td>{{this.time}}</td>
+        <td>{{this.category}}</td>
+        <td>{{this.correct_ans}}/{{this.items}}</td>
+        <td>{{this.h_stat}}</td>
+    </tr>
+    {{/each}}
+
+
+  </table>
+
+

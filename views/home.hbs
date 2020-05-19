@@ -1,0 +1,54 @@
+
+<div class="card">
+   
+  <div class="card-header text-white bg-dark">
+    <div class="row">
+    <div class="col">
+     <h3 id="user">Welcome {{data.name}}({{data.user}})</h3>
+    </div>
+    <div class="col col-lg-2">
+      <p class="btn-block btn btn-secondary h1">Percentage: {{data.t_stat}}%</p>
+    </div>
+    <div class="col col-lg-2">
+      <form action="/history/submit" method="GET">
+      <button type="submit" name="account" value={{data.user}} class="btn btn-primary btn-block">
+      History
+      </button>
+      </form>
+    </div>
+    <div class="col col-lg-2">
+      <button onclick="userLogout()" class="btn btn-primary btn-block">Logout</button>
+      </form>
+    </div>
+  </div>
+  </div>
+
+   <div class="card-body container">
+    <div class="row ">
+     <div class="col text-center ">
+       <h3 class="card-title">Select a category first</h3>
+        <form id="formS" action="/questions/submit" method="GET">
+         <input type="hidden" name="user" id="userHolder">
+         {{#each categories}}
+         <button class="btn btn-secondary btn-lg btn-block" type="submit" name="category" value={{this}}>{{ this }}</button>
+         {{/each}}
+         <button class="btn btn-secondary btn-lg btn-block" type="submit" name="category" value="random">Random</button>
+        </form>    
+     </div>
+    </div>
+   </div>
+  
+ 
+</div>
+
+  
+<script>
+    const user = document.querySelector("#user").innerHTML;
+    const userH = user.substring(user.indexOf('(')+1, user.length-1);
+    const userHolder = document.querySelector("#userHolder");
+    userHolder.value = userH;
+
+    function userLogout() {
+      window.location = "/";
+    }
+</script>
