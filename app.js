@@ -10,6 +10,13 @@ var favicon = require('serve-favicon');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var authRouter = require('./routes/auth');
+
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+var passportSetup = require('./config/passport-setup');
+const key = require('./config/key');
+
 var hbs = require('express-handlebars');
 
 var app = express();
@@ -26,13 +33,20 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
-// parse application/x-www-form-urlencoded
-//app.use(bodyParser.urlencoded({ extended: true }));
-// parse application/json
-//app.use(bodyParser.json());
+// set up session cookies
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [key.session.cookieKey]
+}));
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/auth', authRouter);
 
 
 
