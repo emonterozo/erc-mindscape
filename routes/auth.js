@@ -3,12 +3,6 @@ var router = express.Router();
 var passport = require('passport');
 
 
-// auth login
-router.get('/login', (req, res) => {
-    //res.render('login', { user: req.user });
-    res.render('login');
-});
-
 // auth logout
 router.get('/logout', (req, res) => {
     // handle with passport
@@ -24,7 +18,7 @@ router.get('/google', passport.authenticate('google', {
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    res.redirect('/users');
+    res.redirect('/profile');
 });
 
 module.exports = router;

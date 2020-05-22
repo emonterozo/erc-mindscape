@@ -14,10 +14,14 @@
         </div>
     {{/if}}
     <h6 class="mb-3 align-top font-weight-normal">Please create an account first</h6>
-    <input type="text" class="form-control" placeholder="Enter username" name="uname" value="{{ data }}" required>
-    <input type="text" class="form-control" placeholder="Enter fullname" name="fname" required>
+    <input type="text" class="form-control" placeholder="Name" name="uname" required>
+    <input type="text" class="form-control" placeholder="Mobile Number" name="unumber" required>
+    <input type="text" class="form-control" placeholder="Password" name="upass" required>
+    <input type="text" class="form-control" placeholder="Confirm Password" required>
     <button class="btn btn-lg btn-dark btn-block" type="submit">Sign up</button>
+    <h6>Already have account? <a href="/">Log in here</a></h6>
 </form>
+
 
 
 {{/if}}

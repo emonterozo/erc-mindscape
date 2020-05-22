@@ -22,21 +22,23 @@ var UserHistorySchema = new Schema({
     history: [{}]
 }, {collection: 'accounts'});
 
-var UserSchema = new Schema({
-    username: String,
+var UserGoogleSchema = new Schema({
+    name: String,
     googleID: String,
-    thumbnail: String
+    thumbnail: String,
+    t_stat: Number,
+    history:[{}]
 }, {collection: 'google-user'});
 
 const UserData = mongoose.model('UserData', UserDataSchema);
 const QuestionData = mongoose.model('QuestionData',QuestionDataSchema);
 const UserHistory = mongoose.model('UserHistory',UserHistorySchema);
 
-const User = mongoose.model('User',UserSchema);
+const UserGoogle = mongoose.model('UserGoogle',UserGoogleSchema);
 
 module.exports = {
     UserData: UserData,
     QuestionData: QuestionData,
     UserHistory: UserHistory,
-    User: User
+    UserGoogle: UserGoogle
 }

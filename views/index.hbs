@@ -1,19 +1,17 @@
 <link rel="stylesheet" href="/stylesheets/index.css"> 
-<form class="form-signin" action="/login/submit" method="POST">
+<div class="form-signin">
+<form action="/login/submit" method="POST">
       <blockquote class="blockquote text-center mb-5">
         <h3 class="mb-2">{{title}} A Mind Blowing Game</h3>
         <footer class="blockquote-footer">Welcome to <cite title="Source Title">{{title}}</cite></footer>
       </blockquote>
       <h6 class="mb-3 align-top font-weight-normal">Please sign in</h6>
-      <label for="uname" class="sr-only">Username</label>
-      <input type="text" class="form-control" placeholder="Enter username" name="uname" required>
+      <input type="text" class="form-control" placeholder="Enter Mobile Number" name="unumber" required>
+      <input type="text" class="form-control" placeholder="Enter Password" name="upass" required>
       <button class="btn btn-lg btn-dark btn-block" type="submit">Sign in</button>
-      
 </form>
-<nav>
-<ul>
-<li><a href="/auth/logout">Logout</a></li>
-<li><a href="/auth/login">Login</a></li>
-<li><a href="/">Homepage</a></li>
-</ul>
-</nav>
+<h6>No account yet? <a href="/create">Create account here</a></h6>
+<button class="btn btn-lg btn-dark btn-block mt-2"><a href="/auth/google">Google+</a></button>
+
+</div>
+ 

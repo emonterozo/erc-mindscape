@@ -9,7 +9,7 @@ var Model = require("../models/model");
 	});
 
 	passport.deserializeUser((id, done) => {
-		Model.User.findById(id).then((user) => {
+		Model.UserGoogle.findById(id).then((user) => {
 			done(null, user);
 		});
 	});
@@ -25,17 +25,18 @@ passport.use(
         // passport callback function
         //check user
         //console.log(profile); 
-        Model.User.findOne({googleID: profile.id}, function(err, user){
+        Model.UserGoogle.findOne({googleID: profile.id}, function(err, user){
             if(user){
                 // already have this user
                 console.log('user is: ', user);
                 // do something
                 done(null, user);
             } else {
-                new Model.User({
-                    username: profile.displayName,
+                new Model.UserGoogle({
+                    name: profile.displayName,
                     googleID: profile.id,
-                    thumbnail: profile._json.picture
+                    thumbnail: profile._json.picture,
+                    t_stat: 0
                 }).save().then((newUser) => {
                     console.log('new user created'+newUser)
                     done(null, newUser);

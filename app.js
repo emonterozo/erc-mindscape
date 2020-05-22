@@ -8,9 +8,9 @@ var logger = require('morgan');
 var favicon = require('serve-favicon');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
+var profileRouter = require('./routes/profile');
 var authRouter = require('./routes/auth');
+var gameRouter = require('./routes/game');
 
 const passport = require('passport');
 const cookieSession = require('cookie-session');
@@ -45,8 +45,9 @@ app.use(passport.session());
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/profile', profileRouter);
 app.use('/auth', authRouter);
+app.use('/game', gameRouter);
 
 
 

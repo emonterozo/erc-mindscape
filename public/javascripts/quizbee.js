@@ -122,7 +122,7 @@ function insertHistory(category) {
   const items = score_item.substr(score_item.indexOf("/")+1, score_item.length);
   //console.log(`${score} : ${items} ${todayDate} ${todayTime}`);
   console.log('Inser first');
-  fetch('/account/data', {
+  fetch('/game/account/inserthistory', {
     
     method: 'POST',
     headers: {
@@ -134,7 +134,7 @@ function insertHistory(category) {
     //.then(res =>res.json())
   .then(res => {
     console.log('Update Second');
-      fetch('/update/stat', {
+      fetch('/game/account/updatestat', {
         method: 'POST',
         headers: {
           'Content-type': 'application/x-www-form-urlencoded'
@@ -143,7 +143,7 @@ function insertHistory(category) {
       })
       .then(res => {
         sessionStorage.clear();
-        window.location = '/home';
+        window.location = '/profile';
       })
       
   })
