@@ -1,17 +1,18 @@
 <link rel="stylesheet" href="/stylesheets/index.css"> 
 <div class="form-signin">
-<form action="/login/submit" method="POST">
+<form action="/auth/local" method="POST">
       <blockquote class="blockquote text-center mb-5">
         <h3 class="mb-2">{{title}} A Mind Blowing Game</h3>
         <footer class="blockquote-footer">Welcome to <cite title="Source Title">{{title}}</cite></footer>
       </blockquote>
       <h6 class="mb-3 align-top font-weight-normal">Please sign in</h6>
-      <input type="text" class="form-control" placeholder="Enter Mobile Number" name="unumber" required>
-      <input type="text" class="form-control" placeholder="Enter Password" name="upass" required>
+      <input type="text" class="form-control" placeholder="Enter Mobile Number" name="number" required>
+      <input type="text" class="form-control" placeholder="Enter Password" name="password" required>
       <button class="btn btn-lg btn-dark btn-block" type="submit">Sign in</button>
 </form>
 <h6>No account yet? <a href="/create">Create account here</a></h6>
-<button class="btn btn-lg btn-dark btn-block mt-2"><a href="/auth/google">Google+</a></button>
+<button class="btn btn-lg btn-dark btn-block mt-4"><a class="text-white" href="/auth/google">Continue with Google</a></button>
+<button class="btn btn-lg btn-dark btn-block mt-2"><a class="text-white" href="/auth/facebook">Continue with Facebook</a></button>
 
 </div>
  

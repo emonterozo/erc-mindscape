@@ -52,7 +52,7 @@ function userShowAnswer() {
 
 $('#checkAnswer').click(function() {
   if ($('input[name="choices"]:checked').length > 0) {
-    const correct = document.querySelector("#correct").textContent;
+  const correct = document.querySelector("#correct").textContent;
   const answer = document.querySelector('input[name="choices"]:checked').value;
 
   const new_match = sessionStorage.getItem("match");

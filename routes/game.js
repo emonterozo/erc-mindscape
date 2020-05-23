@@ -5,7 +5,7 @@ var Model = require("../models/model");
 
 
 router.post("/account/updatestat", function(req, res, next){
-    Model.UserGoogle.findById({_id: req.body.user}, function(err,user){
+    Model.UserData.findById({_id: req.body.user}, function(err,user){
       if (err) {
         console.error('error, no entry found');
       }
@@ -26,7 +26,7 @@ router.post("/account/updatestat", function(req, res, next){
   userHolder = req.body.user;
   const dataHistory = req.body;
   delete dataHistory.user;
-    Model.UserGoogle.findByIdAndUpdate({_id: userHolder}, {$push: { history: dataHistory}}, function(err, success){
+    Model.UserData.findByIdAndUpdate({_id: userHolder}, {$push: { history: dataHistory}}, function(err, success){
       if(err) {
         console.log(err);
       } else {

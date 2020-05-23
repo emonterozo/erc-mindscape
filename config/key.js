@@ -1,0 +1,11 @@
+module.exports = {
+    FACEBOOK_CLIENT_ID: "",
+    FACEBOOK_CLIENT_SECRET: "",
+    GOOGLE_CLIENT_ID: "",
+    GOOGLE_CLIENT_SECRET: "",
+    MONGODB_URI: "",
+    SESSION_COOKIE_KEY: "",
+    TWILIO_ACCOUNT_SID: "",
+    TWILIO_AUTH_TOKEN: "",
+    TWILIO_NUMBER: ""
+}

@@ -1,25 +1,25 @@
 
 
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var favicon = require('serve-favicon');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const favicon = require('serve-favicon');
 
-var indexRouter = require('./routes/index');
-var profileRouter = require('./routes/profile');
-var authRouter = require('./routes/auth');
-var gameRouter = require('./routes/game');
+const indexRouter = require('./routes/index');
+const profileRouter = require('./routes/profile');
+const authRouter = require('./routes/auth');
+const gameRouter = require('./routes/game');
 
 const passport = require('passport');
 const cookieSession = require('cookie-session');
-var passportSetup = require('./config/passport-setup');
+const passportSetup = require('./config/passport-setup');
 const key = require('./config/key');
 
-var hbs = require('express-handlebars');
+const hbs = require('express-handlebars');
 
-var app = express();
+const app = express();
 
 // view engine setup
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
@@ -36,7 +36,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 // set up session cookies
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
-  keys: [key.session.cookieKey]
+  keys: [process.env.SESSION_COOKIE_KEY || key.SESSION_COOKIE_KEY]
 }));
 
 // initialize passport

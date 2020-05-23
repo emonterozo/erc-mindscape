@@ -1,20 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var Model = require("../models/model");
+const Model = require("../models/model");
 
 const authCheck = (req, res, next) => {
   if(!req.user) {
-    //if use is not login
     res.redirect('/');
   } else {
     next();
   }
 }
 
-/* GET Subject and User */
+/* 
+  GET Subject and User 
+  Run the authCheck first
+*/
 router.get('/', authCheck, function(req, res, next) {
-  //res.render('profile',{user: req.user});
   Model.QuestionData.find({},'subject',function(err,subjects){
     const subject = subjects.map(function(subj){
       return subj.subject;
@@ -27,7 +28,7 @@ router.get('/', authCheck, function(req, res, next) {
 
 /* Get History */
 router.get("/history/:account",function(req, res, next) {
-  Model.UserGoogle.findById({_id: req.query.account}).lean()
+  Model.UserData.findById({_id: req.query.account}).lean()
   .exec(function(err, user){
     res.render("history",{data: user.history});
   });
@@ -35,7 +36,7 @@ router.get("/history/:account",function(req, res, next) {
 
 /* Select Category and Generate Question */
 router.get("/questions/:category", function (req, res, next) {
-  Model.UserGoogle.findById({_id: req.query.user}, function(err, user){
+  Model.UserData.findById({_id: req.query.user}, function(err, user){
     if(user != null) {
       if (req.query.category === "random") {
         Model.QuestionData.countDocuments({}, function(err, subjCount){
@@ -77,6 +78,7 @@ router.get("/questions/:category", function (req, res, next) {
     }
   });
 });
+
 
 
 
